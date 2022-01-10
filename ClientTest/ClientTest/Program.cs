@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using WebSocketSharp;
+using WebSocketSharp; // LIB: WebSocketSharp-netstandard
 
 namespace ClientTest
 {

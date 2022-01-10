@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="SocketIO.Client\SocketIO.Client.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="WebSocketSharp-netstandard" Version="1.0.1" />
   </ItemGroup>

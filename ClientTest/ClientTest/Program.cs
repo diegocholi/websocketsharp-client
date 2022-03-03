@@ -15,10 +15,7 @@ namespace ClientTest
             Ws.Connect();
             
             // Observer que recebe as mensagens
-            Ws.OnMessage += (sender, e) =>
-            {
-                Console.WriteLine("Message received from "+((WebSocket) sender).Url+" Data: " + e.Data);
-            };
+            Ws.OnMessage += ObserverWs;
 
             // Envio de mensagem com params
             Dictionary<string, string> data = new Dictionary<string, string>()
@@ -32,7 +29,11 @@ namespace ClientTest
             string json = JsonConvert.SerializeObject(data, Formatting.Indented);
             if (Ws != null)
                 Ws.Send(json);
-
+        }
+        
+        private void ObserverWs(object sender, MessageEventArgs e)
+        {
+            Console.WriteLine("Message received from "+((WebSocket) sender).Url+" Data: " + e.Data);
         }
     }
 }

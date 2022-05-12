@@ -1,5 +1,5 @@
 # websocketsharp-client
-WebSocketSharp; // LIB: WebSocketSharp-netstandard
+WebSocketSharp - LIB: WebSocketSharp-netstandard
 
 ```
     // Classe aprimorada que implementa o WebSocketSharp

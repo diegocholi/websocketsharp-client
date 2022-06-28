@@ -113,9 +113,19 @@ namespace MeuSebrae.Utils
         // Verificação de conexão
         public static bool IsConnected()
         {
+            // Reconectar no websocket caso ele não estiver em um tempo de vida válido e estar instanciado
+            if (Ws != null && !Ws.IsAlive) 
+            {
+                Connect();
+                return true;
+            }
+            
+            // Se o websocket está instanciado e ainda dentro do tempo de vida dele
             if (Ws != null && Ws.IsAlive)
                 return true;
-            else return false;
+            
+            // Se o websocket não estiver instanciado e fora do seu tempo de vida, retorna false
+            return false;
         }
     }
 }

@@ -23,6 +23,7 @@ namespace MeuSebrae.Utils
         public WebsocketClient(string url = "")
         {
             Ws = new WebSocket(url);
+            Ws.SslConfiguration.EnabledSslProtocols = System.Security.Authentication.SslProtocols.Tls12;
             Ws.Connect();
         }
 

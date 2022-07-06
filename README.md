@@ -115,7 +115,7 @@ namespace [MeuPacote].Utils
         public static bool IsConnected()
         {
             // Reconectar no websocket caso ele não estiver em um tempo de vida válido e estar instanciado
-            if (Ws != null && !Ws.IsAlive && Ws.Ping()) 
+            if (Ws != null && !Ws.IsAlive) 
             {
                 Connect();
                 return true;

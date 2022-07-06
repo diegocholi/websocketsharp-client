@@ -2,17 +2,17 @@
 WebSocketSharp - LIB: WebSocketSharp-netstandard
 
 ```
-using MeuSebrae.Helpers;
-using MeuSebrae.Shared;
-using MeuSebrae.Shared.Models;
-using MeuSebrae.Shared.Repository;
+using [MeuPacote].Helpers;
+using [MeuPacote].Shared;
+using [MeuPacote].Shared.Models;
+using [MeuPacote].Shared.Repository;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using WebSocketSharp;
 
-namespace MeuSebrae.Utils
+namespace [MeuPacote].Utils
 {
     class WebsocketClient
     {
@@ -129,5 +129,25 @@ namespace MeuSebrae.Utils
             return false;
         }
     }
+}
+```
+
+### Uso do AddObserver
+
+```
+WebsocketClient.AddObserver(ObserverWs, "Evento_1");
+
+private void ObserverWs(object sender, MessageEventArgs e)
+{
+    if (e.Data.Contains("[EVENT]"))
+    {
+        WSEvents eventWS = JsonConvert.DeserializeObject<WSEvents>(e.Data);
+        ProcessEventsWS(eventWS);
+        return;
+    }
+    GroupMessage dataMessage = JsonConvert.DeserializeObject<GroupMessage>(e.Data);
+    if(!dataMessage.IsOwnerMessage || dataMessage.File != null)
+        ProcessReciveMessage(dataMessage);
+    ProcessUpdateListMyGroups(dataMessage);
 }
 ```

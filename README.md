@@ -23,7 +23,10 @@ namespace [MeuPacote].Utils
         public WebsocketClient(string url = "")
         {
             Ws = new WebSocket(url);
-            Ws.SslConfiguration.EnabledSslProtocols = System.Security.Authentication.SslProtocols.Tls12; // Configuração SSL
+            // Configuração SSL
+            if (Configuration.WsGroups.Contains("wss://"))  
+                Ws.SslConfiguration.EnabledSslProtocols = System.Security.Authentication.SslProtocols.Tls12;
+            
             Ws.Connect();
         }
 

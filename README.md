@@ -138,6 +138,7 @@ namespace [MeuPacote].Utils
 ### Uso do AddObserver
 
 ```
+WebsocketClient.InstanceVerify();
 WebsocketClient.AddObserver(ObserverWs, "Evento_1");
 
 private void ObserverWs(object sender, MessageEventArgs e)
